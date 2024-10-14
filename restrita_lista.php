@@ -51,7 +51,7 @@ ml>
     }
  
 
-    echo "<a href='form_adicionar_livro.php'>Adicionar novo livro</a>";
+    echo "<a href='form_lista_pokemon.php'>Adicionar pokemon favorito</a>";
     echo "<a href='logout.php'>Sair</a>";
 
 ?>
