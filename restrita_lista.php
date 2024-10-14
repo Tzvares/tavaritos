@@ -56,10 +56,7 @@ ml>
     echo "<a href='logout.php'>Sair</a>";
 
 ?>
-<?php 
-
-
-?>
+<a href="lista_treinadores.php">ver treinadores</a>
     </div>
 </body>
 </html>
