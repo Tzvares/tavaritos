@@ -39,6 +39,8 @@
             </select>
             <input type="submit" value="Adicionar" name="Adicionar" class="enviar">
         </form>
+        <a href="restrita_lista.php">voltar</a>
+
     </div>
 </body>
 
