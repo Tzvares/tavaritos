@@ -49,10 +49,15 @@ ml>
         }
         echo "</table>";
     }
+
  
 
     echo "<a href='form_lista_pokemon.php'>Adicionar pokemon favorito</a>";
     echo "<a href='logout.php'>Sair</a>";
+
+?>
+<?php 
+
 
 ?>
     </div>
