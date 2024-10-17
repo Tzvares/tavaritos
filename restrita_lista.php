@@ -57,6 +57,7 @@ ml>
 
 ?>
 <a href="lista_treinadores.php">ver treinadores</a>
+<a href='mostra_pokemon.php'>ver pokemon favorito</a>
     </div>
 </body>
 </html>

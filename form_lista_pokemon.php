@@ -9,17 +9,12 @@
 </head>
 
 <body>
-    <nav>
-        <ul class="navbar">
-            <li><a href="restrita_lista.php">Voltar</a></li>
-            <li style="float:right; color: white;"></li>
-        </ul>
-    </nav>
+    
 
     <h1>Adicionar Pokémon à Pokédex</h1>
     <div class="formulario">
         <form action="addpokemon.php" method="post">
-            <h2>Bom dia</h2>
+            
             <label for="pokemon">Pokémon:</label>
             <select name="pokemon" id="pokemon" required>
                 <?php
@@ -44,6 +39,7 @@
             </select>
             <input type="submit" value="Adicionar" name="Adicionar" class="enviar">
         </form>
+        <li><a href="restrita_lista.php">Voltar</a></li>
     </div>
 </body>
 

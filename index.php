@@ -20,6 +20,8 @@
                 </div>
                 <a href='form_adicionar_pessoa.php'>Adicionar nova pessoa</a>
                 
+                
+                
             </form>
         </div>
     </div>
