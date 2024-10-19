@@ -38,7 +38,7 @@ if(!isset($_SESSION['id_pessoa'])){
         // Resgata todas as linhas da consulta
         // https://www.php.net/manual/pt_BR/mysqli-result.fetch-all.php
         $aa = $resultado->fetch_all(MYSQLI_ASSOC);
-        echo "<table>";
+        echo "<table border=1>";
         echo "<thead>
               <th>pokemon</th>
               <th>attack</th>
@@ -69,10 +69,15 @@ if(!isset($_SESSION['id_pessoa'])){
  
 
     echo "<a href='form_lista_pokemon.php'>Adicionar/mudar pokemon favorito</a>";
+    echo "<br>";
+    echo "<a href='deletePokemon.php?pokedex_number={$pokemon['Pokedex_number']}'>Apagar</a>";
+    echo "<br>";
     echo "<a href='logout.php'>Sair</a>";
 
 ?>
-<a href="lista_treinadores.php">ver treinadores</a>
+<br>
+<a href="ver_treinador.php">ver treinadores</a>
+<br>
 <a href='mostra_pokemon.php'>ver pokemon favorito</a>
     </div>
 </body>
