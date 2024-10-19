@@ -11,11 +11,14 @@ if(!isset($_SESSION['id_pessoa'])){
     $db = new mysqli("localhost", "root", "", "pokemons_dataset");
     
     //Query de consulta
-    $stmt = $db->prepare("select * from pokemon ");
+    $stmt = $db->prepare("select * from pokemon join type on pokemon.Type=type.id_type");
+    
    //$stmt->bind_param("i",$_SESSION['id']);
     $stmt->execute();
     //Executa a consulta e armazena o resultado
     $resultado = $stmt->get_result();
+
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,8 +59,8 @@ if(!isset($_SESSION['id_pessoa'])){
                     echo "<td>NÃO</td>";
                 }
                 //echo "<td>{$linha['Is_legendary']}</td>";
+                echo "<td>{$linha['text']}</td>";
 
-                
             echo "</tr>";
         }
         echo "</table>";
