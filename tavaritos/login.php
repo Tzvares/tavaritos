@@ -40,7 +40,7 @@ if($resultado->num_rows==0){
         session_start();
         
         // Cria uma variável de sessão
-        $_SESSION['id'] = $pessoa['id_pessoa'];
+        $_SESSION['id_pessoa'] = $pessoa['id_pessoa'];
         //$_SESSION['logged_in'] = true;
         //$_SESSION['email'] = $pessoa['email'];
 
