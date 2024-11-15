@@ -1,58 +1,44 @@
-<?php
-// Conexão com o banco de dados
-$db = new mysqli("localhost", "root", "", "pokemons_dataset");
-if ($db->connect_error) {
-    die("Conexão falhou: " . $db->connect_error);
-}
-
-// Verifica se o parâmetro pokedex_number foi passado pela URL
-if (isset($_GET['pokedex_number'])) {
-    $pokedex_number = $_GET['pokedex_number'];
-
-    // Consulta para buscar o Pokémon pelo número da Pokédex
-    $query = "SELECT name, pokedex_number, type, attack, defense, is_legendary FROM pokemon WHERE pokedex_number = ?";
-    $stmt = $db->prepare($query);
-    $stmt->bind_param("i", $pokedex_number);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows > 0) {
-        $pokemon = $result->fetch_assoc();
-    } else {
-        echo "Pokémon não encontrado.";
-        exit();
-    }
-} else {
-    echo "Nenhum Pokémon selecionado.";
-    exit();
-}
-
-$db->close();
-?>
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes do Pokémon</title>
+    <title>Pokémons Favoritos</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Detalhes do Pokémon</h1>
+    <h1>Lista de Pokémons Favoritos</h1>
+    
+    <?php
+    // Conectando ao banco de dados
+    $db = new mysqli("localhost", "root", "", "pokemons_dataset");
+    if ($db->connect_error) {
+        die("Conexão falhou: " . $db->connect_error);
+    }
 
-    <div class="pokemon-detalhes">
-        <h2><?php echo htmlspecialchars($pokemon['name']); ?></h2>
-        <p><strong>Número na Pokédex:</strong> <?php echo $pokemon['pokedex_number']; ?></p>
-        <p><strong>Tipo:</strong> <?php echo htmlspecialchars($pokemon['type']); ?></p>
-        <p><strong>Ataque:</strong> <?php echo $pokemon['attack']; ?></p>
-        <p><strong>Defesa:</strong> <?php echo $pokemon['defense']; ?></p>
-        <p><strong>É Lendário:</strong> <?php echo $pokemon['is_legendary'] ? 'Sim' : 'Não'; ?></p>
-    </div>
+    // Consulta para obter os pokémons favoritos (baseado na tabela 'pessoa_pokemon')
+    $query = "SELECT p.name 
+              FROM pessoa_pokemon pp 
+              JOIN pokemon p ON pp.pokedex_number = p.pokedex_number";
 
-    <li><a href="restrita_lista.php">Voltar</a></li>
+    $result = $db->query($query);
+
+    if ($result && $result->num_rows > 0) {
+        echo "<ul>";
+        while ($row = $result->fetch_assoc()) {
+            echo "<li>{$row['name']}</li>";
+        }
+        echo "</ul>";
+    } else {
+        echo "<p>Nenhum Pokémon favorito adicionado ainda.</p>";
+    }
+
+    $db->close();
+    ?>
+
+    <li><a href="form_lista_pokemon.php">Adicionar mais Pokémon</a></li>
 </body>
 
 </html>
